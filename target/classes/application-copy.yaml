@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: my-spring-boot-app
+  cassandra:
+    keyspace-name: default_keyspace
+    username: 
+    password: 
+    schema-action: CREATE_IF_NOT_EXISTS
+    request:
+      timeout: 10s
+    connection:
+      connect-timeout: 10s
+      init-query-timeout: 10s
+datastax:
+  astra:
+    secure-connect-bundle: 

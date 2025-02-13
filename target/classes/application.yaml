@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: my-spring-boot-app
+  cassandra:
+    keyspace-name: default_keyspace
+    username: ozKRBtfHdpxyppacXTXJiudz
+    password: hBdouKRFJZlfL21SBCd.GwF,QQG_1TNOePT16jT1MJK-bXkI5oA+,l20YB,-L_NbWNdw,uXy7CpSmOxZh92,h9qsqGuHaN3wyZyGYMdnygOdUjcQoZ0d.oA.NAZwGylE
+    schema-action: CREATE_IF_NOT_EXISTS
+    request:
+      timeout: 10s
+    connection:
+      connect-timeout: 10s
+      init-query-timeout: 10s
+datastax:
+  astra:
+    secure-connect-bundle: /Users/mangat.rai/datastax/codesample/sephora/my-spring-boot-app/src/main/resources/secure-connect-pacp-gce.zip
