@@ -14,6 +14,7 @@ my-spring-boot-app
 │   │   │           └── MySpringBootAppApplication.java
 │   │   ├── resources
 │   │       ├── application.properties
+            ├── secure-connect-bundle
 │   │       └── static
 │   │           └── index.html
 │   └── test
@@ -36,16 +37,16 @@ my-spring-boot-app
 
 2. **Build the project:**
    ```
-   ./mvnw clean install
+   mvn clean install
    ```
 
 3. **Configure DataStax Astra:**
    - Create a DataStax Astra database and obtain the connection details.
-   - Update the `src/main/resources/application.properties` file with your Astra database credentials.
+   - Update the `src/main/resources/application.yaml` file with your Astra database credentials.
 
 4. **Run the application:**
    ```
-   ./mvnw spring-boot:run
+   mvn spring-boot:run
    ```
 
 5. **Access the application:**
@@ -54,4 +55,3 @@ my-spring-boot-app
 ## Usage
 
 This application serves as a basic template for building Spring Boot applications with DataStax Astra integration. You can extend the functionality by adding more features and endpoints as needed.
->>>>>>> ea4f3b6 (first commit for the sample spring app)
