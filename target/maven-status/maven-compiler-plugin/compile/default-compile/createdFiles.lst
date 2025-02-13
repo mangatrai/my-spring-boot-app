@@ -1,9 +1,0 @@
-com/example/TestDataGenerator.class
-com/example/DataStaxAstraProperties.class
-com/example/repository/YourEntityRepository.class
-com/example/AppConfig.class
-com/example/deserializer/UUIDDeserializer.class
-com/example/MySpringBootAppApplication.class
-com/example/controller/YourEntityController.class
-com/example/entity/YourEntity.class
-com/example/service/YourEntityService.class
