@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# my-spring-boot-app
-sample spring data app for astra connectivity
-=======
 # My Spring Boot Application
 
 This is a Spring Boot application built with version 3.2.1 that connects to the DataStax Astra database.
