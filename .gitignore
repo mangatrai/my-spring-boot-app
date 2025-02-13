@@ -1,1 +1,3 @@
 src/main/resources/application.yaml
+src/main/resources/secure-connect-pacp-gce.zip
+.vscode
