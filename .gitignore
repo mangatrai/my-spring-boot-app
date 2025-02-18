@@ -1,4 +1,7 @@
-src/main/resources/application.yaml
-src/main/resources/secure-connect-pacp-gce.zip
+src/main/resources
 .vscode
 target
+.DS_Store
+.gitignore
+.DS_Store
+.gitignore
