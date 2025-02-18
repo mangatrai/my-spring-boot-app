@@ -43,7 +43,7 @@ my-spring-boot-app
 
       **Create the application.yaml template:**
          ```
-         cp src/main/resources/application-template.yaml src/main/resources/application.yaml
+         cp sample/application-template.yaml src/main/resources/application.yaml
          ```
 
       **Update the configuration:**
