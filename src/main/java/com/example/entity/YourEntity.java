@@ -22,11 +22,6 @@ public class YourEntity {
     @JsonProperty("event_state")
     private String eventState;
 
-    @PrimaryKeyColumn(name = "id", ordinal = 1, type = PrimaryKeyType.CLUSTERED)
-    @JsonDeserialize(using = UUIDDeserializer.class)
-    @JsonProperty("id")
-    private UUID id;
-
     @Column("event_timestamp")
     @JsonProperty("event_timestamp")
     private Date eventTimestamp;
@@ -39,25 +34,10 @@ public class YourEntity {
     @JsonProperty("event_payload_url")
     private String eventPayloadUrl;
 
-    @Column("rid")
-    @JsonProperty("rid")
-    private String rid;
-
-    @Column("self")
-    @JsonProperty("self")
-    private String self;
-
-    @Column("etag")
-    @JsonProperty("etag")
-    private String etag;
-
-    @Column("attachments")
-    @JsonProperty("attachments")
-    private String attachments;
-
-    @Column("ts")
-    @JsonProperty("ts")
-    private Long ts;
+    @Column("id")
+    @JsonDeserialize(using = UUIDDeserializer.class)
+    @JsonProperty("id")
+    private UUID id;
 
     // Getters and Setters
 
@@ -75,14 +55,6 @@ public class YourEntity {
 
     public void setEventState(String eventState) {
         this.eventState = eventState;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
     }
 
     public Date getEventTimestamp() {
@@ -109,43 +81,11 @@ public class YourEntity {
         this.eventPayloadUrl = eventPayloadUrl;
     }
 
-    public String getRid() {
-        return rid;
+    public UUID getId() {
+        return id;
     }
 
-    public void setRid(String rid) {
-        this.rid = rid;
-    }
-
-    public String getSelf() {
-        return self;
-    }
-
-    public void setSelf(String self) {
-        this.self = self;
-    }
-
-    public String getEtag() {
-        return etag;
-    }
-
-    public void setEtag(String etag) {
-        this.etag = etag;
-    }
-
-    public String getAttachments() {
-        return attachments;
-    }
-
-    public void setAttachments(String attachments) {
-        this.attachments = attachments;
-    }
-
-    public Long getTs() {
-        return ts;
-    }
-
-    public void setTs(Long ts) {
-        this.ts = ts;
+    public void setId(UUID id) {
+        this.id = id;
     }
 }

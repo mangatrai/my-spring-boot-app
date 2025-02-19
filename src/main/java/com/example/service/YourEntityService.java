@@ -5,9 +5,7 @@ import com.example.repository.YourEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class YourEntityService {
@@ -19,35 +17,62 @@ public class YourEntityService {
         return repository.save(entity);
     }
 
+    public YourEntity updateEntityByEventIdentifier(String eventIdentifier, YourEntity entity) {
+        List<YourEntity> existingEntities = repository.findByEventIdentifier(eventIdentifier);
+        if (!existingEntities.isEmpty()) {
+            YourEntity existingEntity = existingEntities.get(0);
+            entity.setEventIdentifier(existingEntity.getEventIdentifier());
+            return repository.save(entity);
+        }
+        return null;
+    }
+
+    public YourEntity updateEntityByEventIdentifierAndEventState(String eventIdentifier, String eventState, YourEntity entity) {
+        List<YourEntity> existingEntities = repository.findByEventIdentifierAndEventState(eventIdentifier, eventState);
+        if (!existingEntities.isEmpty()) {
+            YourEntity existingEntity = existingEntities.get(0);
+            entity.setEventIdentifier(existingEntity.getEventIdentifier());
+            entity.setEventState(existingEntity.getEventState());
+            return repository.save(entity);
+        }
+        return null;
+    }
+
     public List<YourEntity> getAllEntities() {
         return repository.findAll();
     }
 
-    public YourEntity getEntityById(UUID id) {
-        return repository.findById(id).orElse(null);
+    public List<YourEntity> getEntitiesByEventIdentifier(String eventIdentifier) {
+        return repository.findByEventIdentifier(eventIdentifier);
     }
 
-    public void deleteEntity(UUID id) {
-        repository.deleteById(id);
+    public List<YourEntity> getEntitiesByEventIdentifierAndEventState(String eventIdentifier, String eventState) {
+        return repository.findByEventIdentifierAndEventState(eventIdentifier, eventState);
     }
 
-    public List<YourEntity> filterEntities(String eventIdentifier, String eventState, UUID id) {
-        if (eventIdentifier != null && eventState != null && id != null) {
-            return repository.findByEventIdentifierAndEventStateAndId(eventIdentifier, eventState, id);
+    public void deleteEntityByEventIdentifierAndEventState(String eventIdentifier, String eventState) {
+        repository.deleteByEventIdentifierAndEventState(eventIdentifier, eventState);
+    }
+
+    public void deleteEntityByEventIdentifier(String eventIdentifier) {
+        repository.deleteByEventIdentifier(eventIdentifier);
+    }
+
+    public List<YourEntity> filterEntities(String eventIdentifier, String eventState, String eventName) {
+        if (eventIdentifier != null && eventState != null && eventName != null) {
+            return repository.findByEventIdentifierAndEventStateAndEventName(eventIdentifier, eventState, eventName);
         } else if (eventIdentifier != null && eventState != null) {
             return repository.findByEventIdentifierAndEventState(eventIdentifier, eventState);
-        } else if (eventIdentifier != null && id != null) {
-            return repository.findByEventIdentifierAndId(eventIdentifier, id);
-        } else if (eventState != null && id != null) {
-            return repository.findByEventStateAndId(eventState, id);
+        } else if (eventIdentifier != null && eventName != null) {
+            return repository.findByEventIdentifierAndEventName(eventIdentifier, eventName);
+        } else if (eventState != null && eventName != null) {
+            return repository.findByEventStateAndEventName(eventState, eventName);
         } else if (eventIdentifier != null) {
             return repository.findByEventIdentifier(eventIdentifier);
         } else if (eventState != null) {
             return repository.findByEventState(eventState);
-        } else if (id != null) {
-            return repository.findById(id)
-                    .map(Collections::singletonList)
-                    .orElse(Collections.emptyList());
+        } else if (eventName != null) {
+            return repository.findByEventName(eventName);
         } else {
             return repository.findAll();
         }

@@ -8,50 +8,51 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.Random;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.Date;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Component
 public class TestDataGenerator implements CommandLineRunner {
+
+    private static final Logger logger = LoggerFactory.getLogger(TestDataGenerator.class);
 
     @Autowired
     private RestTemplate restTemplate;
 
     private static final String URL = "http://localhost:8080/entities";
-    private static final String[] EVENT_STATES = {"VALIDATED", "CREATED", "RESCHEDULED"};
+    private static final String[] EVENT_STATES = {"VALIDATED", "CREATED", "RESCHEDULED", "CANCELLED", "MODIFIED"};
     private static final Random RANDOM = new Random();
+    private static final AtomicInteger eventIdentifierCounter = new AtomicInteger(0);
+    String prefix = System.getProperty("instanceName", "TEST");
 
     @Override
     public void run(String... args) throws Exception {
-        int numberOfRecords = 1000; // Change this to control the number of records
-        for (int i = 0; i < numberOfRecords; i++) {
-            YourEntity entity = generateRandomEntity();
-            restTemplate.postForObject(URL, entity, YourEntity.class);
+        boolean generateTestData = Boolean.parseBoolean(System.getProperty("generateTestData", "false"));
+        if (generateTestData) {
+            logger.info("Instance Name: {}", prefix);
+            int numberOfRecords = Integer.parseInt(System.getProperty("numTestRecords", "10000"));
+            logger.info("Number of Test Records: {}", numberOfRecords);
+            for (int i = 0; i < numberOfRecords; i++) {
+                YourEntity entity = generateRandomEntity();
+                restTemplate.postForObject(URL, entity, YourEntity.class);
+                logger.info("Number of Test Records Inserted: {}", i);
+            }
+        } else {
+            logger.info("Test data generation is disabled.");
         }
     }
 
     private YourEntity generateRandomEntity() {
         YourEntity entity = new YourEntity();
         entity.setId(UUID.randomUUID());
-        entity.setEventIdentifier("MXND" + RANDOM.nextInt(10000));
+        entity.setEventIdentifier(prefix + "_MXND_" + eventIdentifierCounter.incrementAndGet());
         entity.setEventTimestamp(new Date());
         entity.setEventState(EVENT_STATES[RANDOM.nextInt(EVENT_STATES.length)]);
         entity.setEventName("com.sephora.happpening.reservation.created");
         entity.setEventPayloadUrl("https://sepeus1lowerhasm01.blob.core.windows.net/auditing-cloud-event/com.sephora.happpening.reservation.created_2024-11-01T12%3A15Z");
-        entity.setRid(generateRandomRid());
-        entity.setSelf("dbs/ZadCAA==/colls/ZadCAJs9qXY=/docs/" + entity.getRid() + "/");
-        entity.setEtag(generateRandomEtag());
-        entity.setAttachments("attachments/");
-        entity.setTs(System.currentTimeMillis() / 1000L);
         return entity;
-    }
-
-    private String generateRandomRid() {
-        byte[] array = new byte[16]; // length is bounded by 16
-        RANDOM.nextBytes(array);
-        return java.util.Base64.getEncoder().encodeToString(array);
-    }
-
-    private String generateRandomEtag() {
-        return String.format("\"%08x-0000-0100-0000-%08x\"", RANDOM.nextInt(), RANDOM.nextInt());
     }
 }

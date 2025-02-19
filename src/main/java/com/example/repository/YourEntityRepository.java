@@ -5,20 +5,25 @@ import org.springframework.data.cassandra.repository.CassandraRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.UUID;
 
 @Repository
-public interface YourEntityRepository extends CassandraRepository<YourEntity, UUID> {
-
-    List<YourEntity> findByEventIdentifierAndEventStateAndId(String eventIdentifier, String eventState, UUID id);
-
-    List<YourEntity> findByEventIdentifierAndEventState(String eventIdentifier, String eventState);
-
-    List<YourEntity> findByEventIdentifierAndId(String eventIdentifier, UUID id);
-
-    List<YourEntity> findByEventStateAndId(String eventState, UUID id);
+public interface YourEntityRepository extends CassandraRepository<YourEntity, String> {
 
     List<YourEntity> findByEventIdentifier(String eventIdentifier);
 
+    void deleteByEventIdentifierAndEventState(String eventIdentifier, String eventState);
+
+    void deleteByEventIdentifier(String eventIdentifier);
+
+    List<YourEntity> findByEventIdentifierAndEventState(String eventIdentifier, String eventState);
+
+    List<YourEntity> findByEventIdentifierAndEventName(String eventIdentifier, String eventName);
+
+    List<YourEntity> findByEventStateAndEventName(String eventState, String eventName);
+
+    List<YourEntity> findByEventIdentifierAndEventStateAndEventName(String eventIdentifier, String eventState, String eventName);
+
     List<YourEntity> findByEventState(String eventState);
+
+    List<YourEntity> findByEventName(String eventName);
 }
