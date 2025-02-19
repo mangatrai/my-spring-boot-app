@@ -7,6 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.cassandra.CqlSessionBuilderCustomizer;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.cassandra.core.cql.CqlTemplate;
+
+import com.datastax.oss.driver.api.core.CqlSession;
 
 @SpringBootApplication
 @EnableConfigurationProperties(DataStaxAstraProperties.class)
@@ -17,9 +20,13 @@ public class MySpringBootAppApplication {
     }
 
     @Bean
+    public CqlTemplate cqlTemplate(CqlSession cqlSession) {
+        return new CqlTemplate(cqlSession);
+    }
+
+    @Bean
     public CqlSessionBuilderCustomizer sessionBuilderCustomizer(DataStaxAstraProperties astraProperties) {
         Path bundle = astraProperties.getSecureConnectBundle().toPath();
-        return builder -> builder
-                .withCloudSecureConnectBundle(bundle);
+        return builder -> builder.withCloudSecureConnectBundle(bundle);
     }
 }

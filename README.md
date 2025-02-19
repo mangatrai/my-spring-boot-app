@@ -38,6 +38,7 @@ my-spring-boot-app
 2. **Configure DataStax Astra:**
    - Create a DataStax Astra database and obtain the connection details.
    - Update the `src/main/resources/application.yaml` file with your Astra database credentials.
+   - App will Create tableschema and index at startup. If you want to create yourself please refer to  [cql file](sample/auditing_events.cql)
 
    ## Application yaml Instructions
 
@@ -70,7 +71,7 @@ my-spring-boot-app
 
    ### Using JAR file:
    ```
-   java -DgenerateTestData=true -DinstanceName=MyInstance -DnumTestRecords=1000 -jar target/my-spring-boot-app-0.0.1-SNAPSHOT.jar
+   java -DgenerateTestData=true -DinstanceName=MyInstance -DnumTestRecords=1000 -jar target/my-spring-boot-app-1.0.0.jar
    ```
 
    ### System Properties:
