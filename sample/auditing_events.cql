@@ -37,9 +37,3 @@ select * from auditing_events where event_state = 'VALIDATED';
 
 
 select * from auditing_events where event_name = 'dayforce_sync';
-
-
-select * from auditing_events where id = 1beb8199-453c-4bb2-8857-028045f2a771 and event_state = 'VALIDATED'and event_identifier = '0058';
-
-
-select * from auditing_events where event_identifier = '0058' and id = 1beb8199-453c-4bb2-8857-028045f2a771 and event_state = 'VALIDATED';

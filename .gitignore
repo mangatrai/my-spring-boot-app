@@ -5,3 +5,4 @@ target
 .gitignore
 .DS_Store
 .gitignore
+jmeter/jmeter.log

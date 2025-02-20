@@ -51,8 +51,9 @@ public class TestDataGenerator implements CommandLineRunner {
         entity.setEventIdentifier(prefix + "_MXND_" + eventIdentifierCounter.incrementAndGet());
         entity.setEventTimestamp(new Date());
         entity.setEventState(EVENT_STATES[RANDOM.nextInt(EVENT_STATES.length)]);
-        entity.setEventName("com.sephora.happpening.reservation.created");
-        entity.setEventPayloadUrl("https://sepeus1lowerhasm01.blob.core.windows.net/auditing-cloud-event/com.sephora.happpening.reservation.created_2024-11-01T12%3A15Z");
+        entity.setEventName("com.sephora.happpening.reservation." + entity.getEventState().toLowerCase());
+        String datePattern = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'").format(new Date());
+        entity.setEventPayloadUrl("https://sepeus1lowerhasm01.blob.core.windows.net/auditing-cloud-event/" + entity.getEventName() + "_" + datePattern);
         return entity;
     }
 }
