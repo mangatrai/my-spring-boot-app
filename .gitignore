@@ -6,3 +6,5 @@ target
 .DS_Store
 .gitignore
 jmeter/jmeter.log
+jmeter/results.jtl
+jmeter/dashboard

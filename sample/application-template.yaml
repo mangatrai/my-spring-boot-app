@@ -1,16 +1,28 @@
+# Spring Boot application configuration
 spring:
   application:
-    name: my-spring-boot-app
+    name: my-spring-boot-app  # Name of the Spring Boot application
   cassandra:
-    keyspace-name: default_keyspace
-    username: 
-    password: 
-    schema-action: CREATE_IF_NOT_EXISTS
+    keyspace-name: default_keyspace  # Keyspace name for Cassandra
+    username:  # Username for Cassandra
+    password:  # Password for Cassandra
+    schema-action: CREATE_IF_NOT_EXISTS  # Schema action for Cassandra
     request:
-      timeout: 10s
+      timeout: 10s  # Request timeout for Cassandra
     connection:
-      connect-timeout: 10s
-      init-query-timeout: 10s
+      connect-timeout: 10s  # Connection timeout for Cassandra
+      init-query-timeout: 10s  # Initialization query timeout for Cassandra
+
+# DataStax Astra configuration
 datastax:
   astra:
-    secure-connect-bundle: 
+    secure-connect-bundle:  # Path to the secure connect bundle for DataStax Astra
+
+# Optional Server configuration to enable SSL
+server:
+  port: 8443  # Port for the server
+  ssl:
+    key-store: src/main/resources/keystore.p12  # Path to the keystore file
+    key-store-password: # Password for the keystore
+    key-store-type: PKCS12  # Type of the keystore
+    key-alias: myapp  # Alias for the key in the keystore
