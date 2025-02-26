@@ -1,19 +1,18 @@
-
 package com.example;
 
-import java.io.File;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.core.io.Resource;
 
 @ConfigurationProperties(prefix = "datastax.astra")
 public class DataStaxAstraProperties {
 
-    public File getSecureConnectBundle() {
+    private Resource secureConnectBundle;
+
+    public Resource getSecureConnectBundle() {
         return secureConnectBundle;
     }
 
-    public void setSecureConnectBundle(File secureConnectBundle) {
+    public void setSecureConnectBundle(Resource secureConnectBundle) {
         this.secureConnectBundle = secureConnectBundle;
     }
-
-    private File secureConnectBundle;
 }

@@ -1,6 +1,7 @@
 package com.example;
 
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -26,7 +27,12 @@ public class MySpringBootAppApplication {
 
     @Bean
     public CqlSessionBuilderCustomizer sessionBuilderCustomizer(DataStaxAstraProperties astraProperties) {
-        Path bundle = astraProperties.getSecureConnectBundle().toPath();
+        final Path bundle;
+        try {
+            bundle = Paths.get(astraProperties.getSecureConnectBundle().getURI());
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to get secure connect bundle", e);
+        }
         return builder -> builder.withCloudSecureConnectBundle(bundle);
     }
 }
