@@ -76,59 +76,6 @@
 			"response": []
 		},
 		{
-			"name": "UpdateByIdentifier",
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n           \"event_identifier\": \"MXND12JFD\",\n           \"event_state\": \"CREATED\",\n           \"event_timestamp\": \"1730463300000\",\n           \"event_name\": \"com.sephora.happpening.reservation.updated\",\n           \"event_payload_url\": \"https://sepeus1lowerhasm01.blob.core.windows.net/auditing-cloud-event/com.sephora.happpening.reservation.updated_2024-11-01T12%3A15Z\",\n           \"id\": \"a543e321-e89b-12d3-b456-526614174114\"\n         }",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/entities/MXND12JFD",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"entities",
-						"MXND12JFD"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GetAllEntities",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/entities",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"entities"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "GetEntityByIdentifier",
 			"request": {
 				"method": "GET",
@@ -170,32 +117,6 @@
 			"response": []
 		},
 		{
-			"name": "FilterEntityByIdentifier",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/entities/filter?eventIdentifier=MXND12JFD",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"entities",
-						"filter"
-					],
-					"query": [
-						{
-							"key": "eventIdentifier",
-							"value": "MXND12JFD"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "FilterEntityByEventState",
 			"request": {
 				"method": "GET",
@@ -215,36 +136,6 @@
 						{
 							"key": "eventState",
 							"value": "RESCHEDULED"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "FilterEntityByIdentifierAndState",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/entities/filter?eventIdentifier=MXND12JFD&eventState=VALIDATED",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"entities",
-						"filter"
-					],
-					"query": [
-						{
-							"key": "eventIdentifier",
-							"value": "MXND12JFD"
-						},
-						{
-							"key": "eventState",
-							"value": "VALIDATED"
 						}
 					]
 				}
@@ -272,32 +163,6 @@
 							"key": "eventName",
 							"value": "com.sephora.happpening.reservation.created"
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "DeleteByEventIdentifierAndState",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:8080/entities/MXND12JFD/VALIDATED",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"entities",
-						"MXND12JFD",
-						"VALIDATED"
 					]
 				}
 			},
