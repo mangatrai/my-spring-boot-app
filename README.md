@@ -148,18 +148,6 @@ To get entities by `eventIdentifier` and `eventState`:
 curl -X GET http://localhost:8080/entities/MXND12JFD/VALIDATED
 ```
 
-To filter entities by `eventIdentifier`:
-
-```sh
-curl -X GET "http://localhost:8080/entities/filter?eventIdentifier=MXND12JFD"
-```
-
-To filter entities by `eventIdentifier` and `eventState`:
-
-```sh
-curl -X GET "http://localhost:8080/entities/filter?eventIdentifier=MXND12JFD&eventState=VALIDATED"
-```
-
 To filter entities by `eventState`:
 
 ```sh

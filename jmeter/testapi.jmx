@@ -190,7 +190,7 @@
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="PUT API Thread Group">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="PUT API Thread Group" enabled="true">
         <stringProp name="TestPlan.comments">test put/update. form request dynamically and also retrieve from file created in previous step.</stringProp>
         <intProp name="ThreadGroup.num_threads">25</intProp>
         <intProp name="ThreadGroup.ramp_time">120</intProp>
@@ -205,7 +205,7 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Update Entiry By Identifier and State">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Update Entiry By Identifier and State" enabled="true">
           <stringProp name="TestPlan.comments">Updpate database using eventIdentifier and State
 </stringProp>
           <stringProp name="HTTPSampler.domain">${server}</stringProp>
@@ -322,7 +322,7 @@
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="GET API Thread Group">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="GET API Thread Group" enabled="true">
         <stringProp name="TestPlan.comments">thread to run GET calls for Primary key eventIdentifier and eventState</stringProp>
         <intProp name="ThreadGroup.num_threads">150</intProp>
         <intProp name="ThreadGroup.ramp_time">300</intProp>
@@ -375,7 +375,7 @@
           </CSVDataSet>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET By Event Identifier and State" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET By Event Identifier and State">
           <stringProp name="TestPlan.comments">Read Query to retrieve records based on primary key( partition key and clustering key)
 </stringProp>
           <stringProp name="HTTPSampler.domain">${server}</stringProp>
@@ -451,7 +451,7 @@
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="SAI Filter Read Thread Group">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="SAI Filter Read Thread Group" enabled="true">
         <stringProp name="TestPlan.comments">Group to run queries on SAI index.</stringProp>
         <intProp name="ThreadGroup.num_threads">20</intProp>
         <intProp name="ThreadGroup.ramp_time">300</intProp>
@@ -466,7 +466,7 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Filter Entity By Event State" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Filter Entity By Event State">
           <stringProp name="TestPlan.comments">Read query based on eventState SAI filter</stringProp>
           <stringProp name="HTTPSampler.domain">${server}</stringProp>
           <stringProp name="HTTPSampler.port">${port}</stringProp>
@@ -503,7 +503,7 @@
           </CSVDataSet>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Filter Entity By Event Name">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Filter Entity By Event Name" enabled="true">
           <stringProp name="TestPlan.comments">Read query based on eventName
  SAI filter</stringProp>
           <stringProp name="HTTPSampler.domain">${server}</stringProp>
@@ -780,7 +780,7 @@
         <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
-      <PostThreadGroup guiclass="PostThreadGroupGui" testclass="PostThreadGroup" testname="tearDown Thread Group">
+      <PostThreadGroup guiclass="PostThreadGroupGui" testclass="PostThreadGroup" testname="tearDown Thread Group" enabled="true">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
         <longProp name="ThreadGroup.duration">15</longProp>
